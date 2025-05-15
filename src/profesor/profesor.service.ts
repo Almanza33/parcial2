@@ -11,8 +11,8 @@ export class ProfesorService {
     @InjectRepository(ProfesorEntity)
     private readonly profesorRepository: Repository<ProfesorEntity>,
 
-    @InjectRepository(EvaluacionEntity)
-    private readonly evaluacionRepository: Repository<EvaluacionEntity>,
+    /* @InjectRepository(EvaluacionEntity)
+    private readonly evaluacionRepository: Repository<EvaluacionEntity>, */
   ) {}
 
   async crearProfesor(profesor: ProfesorEntity): Promise<ProfesorEntity> {
@@ -29,18 +29,18 @@ export class ProfesorService {
     if (!profesor) {
       throw new Error('Profesor no encontrado');
     }
-    const evaluacion = await this.evaluacionRepository.findOne({
+    /* const evaluacion = await this.evaluacionRepository.findOne({
       where: { id: evaluacionID },
       relations: ['profesor'],
     });
     if (!evaluacion) {
       throw new Error('Evaluación no encontrada');
-    }
+    } */
 
     if (profesor.evaluaciones.length >= 3) {
       throw new Error('El profe tiene muchas evals ya');
     }
-    profesor.evaluaciones.push(evaluacion);
+    /* profesor.evaluaciones.push(evaluacion); */
     await this.profesorRepository.save(profesor);
   }
 }

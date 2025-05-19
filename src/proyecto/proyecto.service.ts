@@ -46,6 +46,9 @@ export class ProyectoService {
       throw new Error('Proyecto no encontrado');
     }
     const estudiante = proyecto.lider;
+    if (!estudiante) {
+      throw new Error('Estudiante no encontrado');
+    }
     return estudiante;
   }
 }

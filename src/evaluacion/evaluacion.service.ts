@@ -14,7 +14,10 @@ export class EvaluacionService {
   async crearEvaluacion(
     evaluacion: EvaluacionEntity,
   ): Promise<EvaluacionEntity> {
-    if (evaluacion.proyecto.mentor === evaluacion.profesor) {
+    if (
+      evaluacion.proyecto &&
+      evaluacion.proyecto.mentor === evaluacion.profesor
+    ) {
       throw new Error('No se puede porque el mentor es profesor');
     }
     return await this.evaluacionRepository.save(evaluacion);

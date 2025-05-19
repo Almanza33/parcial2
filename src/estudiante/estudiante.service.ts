@@ -30,7 +30,7 @@ export class EstudianteService {
     if (!estudiante) {
       throw new Error('Estudiante no encontrado');
     }
-    if (estudiante.proyectos.length > 0) {
+    if (estudiante.proyectos && estudiante.proyectos.length > 0) {
       throw new Error(
         'No se puede eliminar el estudiante porque tiene proyectos activs',
       );

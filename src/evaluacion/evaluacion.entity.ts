@@ -1,5 +1,5 @@
-import { ProfesorEntity } from 'src/profesor/profesor.entity';
-import { ProyectoEntity } from 'src/proyecto/proyecto.entity';
+import { ProfesorEntity } from '../profesor/profesor.entity';
+import { ProyectoEntity } from '../proyecto/proyecto.entity';
 import { Entity, Long, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -8,8 +8,8 @@ export class EvaluacionEntity {
   id: Long;
 
   @ManyToOne(() => ProyectoEntity, (proyecto) => proyecto.evaluaciones)
-  proyecto: ProyectoEntity;
+  proyecto: ProyectoEntity | null;
 
   @ManyToOne(() => ProfesorEntity, (profesor) => profesor.evaluaciones)
-  profesor: ProfesorEntity;
+  profesor: ProfesorEntity | null;
 }

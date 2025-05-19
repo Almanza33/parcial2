@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { ProfesorEntity } from './profesor.entity';
-import { EvaluacionEntity } from 'src/evaluacion/evaluacion.entity';
 
 @Injectable()
 export class ProfesorService {
@@ -16,7 +15,7 @@ export class ProfesorService {
   ) {}
 
   async crearProfesor(profesor: ProfesorEntity): Promise<ProfesorEntity> {
-    if (profesor.extension.toString.length !== 5) {
+    if (profesor.extension.toString().length !== 5) {
       throw new Error('La extensión debe tener 5 dis');
     }
     return await this.profesorRepository.save(profesor);
@@ -37,7 +36,7 @@ export class ProfesorService {
       throw new Error('Evaluación no encontrada');
     } */
 
-    if (profesor.evaluaciones.length >= 3) {
+    if (profesor.evaluaciones && profesor.evaluaciones.length >= 3) {
       throw new Error('El profe tiene muchas evals ya');
     }
     /* profesor.evaluaciones.push(evaluacion); */

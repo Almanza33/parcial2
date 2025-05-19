@@ -28,5 +28,5 @@ export class EstudianteEntity {
   promedio: number;
 
   @OneToMany(() => ProyectoEntity, (proyecto) => proyecto.lider)
-  proyectos: ProyectoEntity[];
+  proyectos: ProyectoEntity[] | null;
 }

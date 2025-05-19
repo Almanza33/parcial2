@@ -8,8 +8,8 @@ import {
 } from 'typeorm';
 
 import { EstudianteEntity } from '../estudiante/estudiante.entity';
-import { ProfesorEntity } from 'src/profesor/profesor.entity';
-import { EvaluacionEntity } from 'src/evaluacion/evaluacion.entity';
+import { ProfesorEntity } from '../profesor/profesor.entity';
+import { EvaluacionEntity } from '../evaluacion/evaluacion.entity';
 
 @Entity()
 export class ProyectoEntity {
@@ -38,11 +38,11 @@ export class ProyectoEntity {
   fechaFin: string;
 
   @ManyToOne(() => EstudianteEntity, (estudiante) => estudiante.proyectos)
-  lider: EstudianteEntity;
+  lider: EstudianteEntity | null;
 
   @ManyToOne(() => ProfesorEntity, (profesor) => profesor.mentorias)
-  mentor: ProfesorEntity;
+  mentor: ProfesorEntity | null;
 
   @OneToMany(() => EvaluacionEntity, (evaluacion) => evaluacion.proyecto)
-  evaluaciones: EvaluacionEntity[];
+  evaluaciones: EvaluacionEntity[] | null;
 }

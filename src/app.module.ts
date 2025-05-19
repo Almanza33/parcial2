@@ -22,7 +22,7 @@ import { EvaluacionEntity } from './evaluacion/evaluacion.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
+      password: '123',
       database: 'parcial2',
       entities: [
         EstudianteEntity,

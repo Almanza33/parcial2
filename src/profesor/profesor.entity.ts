@@ -1,5 +1,5 @@
-import { EvaluacionEntity } from 'src/evaluacion/evaluacion.entity';
-import { ProyectoEntity } from 'src/proyecto/proyecto.entity';
+import { EvaluacionEntity } from '../evaluacion/evaluacion.entity';
+import { ProyectoEntity } from '../proyecto/proyecto.entity';
 import {
   Entity,
   Long,
@@ -29,8 +29,8 @@ export class ProfesorEntity {
   esParEvaluador: boolean;
 
   @OneToMany(() => ProyectoEntity, (proyecto) => proyecto.mentor)
-  mentorias: ProyectoEntity[];
+  mentorias: ProyectoEntity[] | null;
 
   @OneToMany(() => EvaluacionEntity, (evaluacion) => evaluacion.proyecto)
-  evaluaciones: EvaluacionEntity[];
+  evaluaciones: EvaluacionEntity[] | null;
 }
